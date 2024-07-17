@@ -14,6 +14,8 @@ in
 
 [
   {
+    __debug = { inherit repoRoot pkgs; };
+
     inherit (project) cabalProject;
 
     devShells.default = ghc96.devShell;
@@ -30,6 +32,10 @@ in
     latex-documents = repoRoot.nix.latex-documents;
 
     hydraJobs.required = lib.iogx.mkHydraRequiredJob { };
+  }
+
+  {
+    packages.combined-haddock = repoRoot.nix.combined-haddock;
   }
 
   {
