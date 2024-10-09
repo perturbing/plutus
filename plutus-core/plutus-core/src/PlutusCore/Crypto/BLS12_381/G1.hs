@@ -112,7 +112,7 @@ compress = coerce BlstBindings.blsCompress
 -}
 {-# INLINE uncompress #-}
 uncompress :: ByteString -> Either BlstBindings.BLSTError Element
-uncompress = coerce BlstBindings.blsUncompress
+uncompress = coerce (BlstBindings.blsUncompress @BlstBindings.Curve1)
 
 {-  Note [Hashing and Domain Separation Tags].  The hashToGroup functions take a
    bytestring and hash it to obtain an element in the relevant group, as
@@ -148,18 +148,18 @@ hashToGroup msg dst =
 -- | The zero element of G1.  This cannot be flat-serialised and is provided
 -- only for off-chain testing.
 offchain_zero :: Element
-offchain_zero = coerce BlstBindings.Internal.blsZero
+offchain_zero = coerce (BlstBindings.Internal.blsZero @BlstBindings.Curve1)
 
 -- | The zero element of G1 compressed into a bytestring.  This is provided for
 -- convenience in PlutusTx and is not exported as a builtin.
 {-# INLINABLE compressed_zero #-}
 compressed_zero :: ByteString
-compressed_zero = compress $ coerce (BlstBindings.Internal.blsZero @BlstBindings.Internal.Curve1)
+compressed_zero = compress $ coerce (BlstBindings.Internal.blsZero @BlstBindings.Curve1)
 
 -- | The standard generator of G1 compressed into a bytestring.  This is
 -- provided for convenience in PlutusTx and is not exported as a builtin.
 compressed_generator :: ByteString
-compressed_generator = compress $ coerce (BlstBindings.Internal.blsGenerator @BlstBindings.Internal.Curve1)
+compressed_generator = compress $ coerce (BlstBindings.Internal.blsGenerator @BlstBindings.Curve1)
 
 -- Utilities (not exposed as builtins)
 
