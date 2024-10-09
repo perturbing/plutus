@@ -62,16 +62,16 @@ instance Hashable Element where
 -- | Add two G2 group elements
 {-# INLINE add #-}
 add :: Element -> Element -> Element
-add = coerce BlstBindings.blsAddOrDouble
+add = coerce (BlstBindings.blsAddOrDouble @BlstBindings.Curve2)
 
 -- | Negate a G2 group element
 {-# INLINE neg #-}
 neg :: Element -> Element
-neg = coerce BlstBindings.blsNeg
+neg = coerce (BlstBindings.blsNeg @BlstBindings.Curve2)
 
 {-# INLINE scalarMul #-}
 scalarMul :: Integer -> Element -> Element -- Other way round from library function
-scalarMul = coerce $ flip BlstBindings.blsMult
+scalarMul = coerce $ flip (BlstBindings.blsMult @BlstBindings.Curve2)
 
 {- | Compress a G2 element to a bytestring. This serialises a curve point to its x
  coordinate only, using an extra bit to determine which of two possible y
@@ -80,7 +80,7 @@ scalarMul = coerce $ flip BlstBindings.blsMult
 -}
 {-# INLINE compress #-}
 compress :: Element -> ByteString
-compress = coerce BlstBindings.blsCompress
+compress = coerce (BlstBindings.blsCompress @BlstBindings.Curve2)
 
 {- | Uncompress a bytestring to get a G2 point.  This will fail if any of the
    following are true:
@@ -101,7 +101,7 @@ hashToGroup :: ByteString -> ByteString -> Either BLS12_381_Error Element
 hashToGroup msg dst =
     if Data.ByteString.length dst > 255
     then Left HashToCurveDstTooBig
-    else Right . Element $ BlstBindings.blsHash msg (Just dst) Nothing
+    else Right . Element $ BlstBindings.blsHash @BlstBindings.Curve2 msg (Just dst) Nothing
 
 -- | The zero element of G2.  This cannot be flat-serialised and is provided
 -- only for off-chain testing.
