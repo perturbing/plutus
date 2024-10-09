@@ -99,7 +99,7 @@ scalarMul = coerce $ flip (BlstBindings.blsMult @BlstBindings.Curve1)
 -}
 {-# INLINE compress #-}
 compress :: Element -> ByteString
-compress = coerce (BlstBindings.blsCompress @BlstBindings.Curve1) )
+compress = coerce (BlstBindings.blsCompress @BlstBindings.Curve1)
 
 {- | Uncompress a bytestring to get a G1 point.  This will fail if any of the
    following are true.
