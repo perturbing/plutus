@@ -111,12 +111,12 @@ offchain_zero = coerce BlstBindings.Internal.blsZero
 -- | The zero element of G2 compressed into a bytestring.  This is provided for
 -- convenience in PlutusTx and is not exported as a builtin.
 compressed_zero :: ByteString
-compressed_zero = compress $ coerce BlstBindings.Internal.blsZero
+compressed_zero = compress $ coerce (BlstBindings.Internal.blsZero @BlstBindings.Internal.Curve2)
 
 -- | The standard generator of G2 compressed into a bytestring.  This is
 -- provided for convenience in PlutusTx and is not exported as a builtin.
 compressed_generator :: ByteString
-compressed_generator = compress $ coerce BlstBindings.Internal.blsGenerator
+compressed_generator = compress $ coerce (BlstBindings.Internal.blsGenerator @BlstBindings.Internal.Curve1)
 
 -- Utilities (not exposed as builtins)
 

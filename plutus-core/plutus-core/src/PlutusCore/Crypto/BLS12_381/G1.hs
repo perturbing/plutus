@@ -154,12 +154,12 @@ offchain_zero = coerce BlstBindings.Internal.blsZero
 -- convenience in PlutusTx and is not exported as a builtin.
 {-# INLINABLE compressed_zero #-}
 compressed_zero :: ByteString
-compressed_zero = compress $ coerce BlstBindings.Internal.blsZero
+compressed_zero = compress $ coerce (BlstBindings.Internal.blsZero @BlstBindings.Internal.Curve1)
 
 -- | The standard generator of G1 compressed into a bytestring.  This is
 -- provided for convenience in PlutusTx and is not exported as a builtin.
 compressed_generator :: ByteString
-compressed_generator = compress $ coerce BlstBindings.Internal.blsGenerator
+compressed_generator = compress $ coerce (BlstBindings.Internal.blsGenerator @BlstBindings.Internal.Curve1)
 
 -- Utilities (not exposed as builtins)
 
