@@ -1,4 +1,5 @@
-{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE DerivingStrategies #-}
+{-# LANGUAGE LambdaCase         #-}
 
 module PlutusBenchmark.NaturalSort (naturalSort)
 where

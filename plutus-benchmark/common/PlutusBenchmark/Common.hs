@@ -1,6 +1,7 @@
-{-# LANGUAGE BangPatterns #-}
-{-# LANGUAGE LambdaCase   #-}
-{-# LANGUAGE ViewPatterns #-}
+{-# LANGUAGE BangPatterns        #-}
+{-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE LambdaCase          #-}
+{-# LANGUAGE ViewPatterns        #-}
 
 {- | Miscellaneous shared code for benchmarking-related things. -}
 module PlutusBenchmark.Common
